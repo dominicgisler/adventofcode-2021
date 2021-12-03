@@ -33,26 +33,6 @@ Use the binary numbers in your diagnostic report to calculate the oxygen generat
 
 $input = file_get_contents('3.txt');
 
-$counts = [
-    0 => [],
-    1 => []
-];
-$gamma = '';
-$eps = '';
-foreach (explode("\n", $input) as $val) {
-    $bits = str_split($val);
-    foreach ($bits as $key => $bit) {
-        if (!isset($counts[$bit][$key])) {
-            $counts[$bit][$key] = 0;
-        }
-        $counts[$bit][$key]++;
-    }
-}
-for ($i = 0; $i < sizeof($counts[0]); $i++) {
-    $gamma .= ($counts[0][$i] > $counts[1][$i]) ? '0' : '1';
-    $eps .= ($counts[0][$i] < $counts[1][$i]) ? '0' : '1';
-}
-
 $oxy = explode("\n", $input);
 $pos = 0;
 while (sizeof($oxy) > 1) {
